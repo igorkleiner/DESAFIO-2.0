@@ -10,6 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+$glob_file = __DIR__.DIRECTORY_SEPARATOR.'web'.DIRECTORY_SEPARATOR.'*';
+foreach(glob($glob_file) as $file)
+{
+    Log::info("ENTREI");
+	include $file;
+}
+#rota funcional
+Route::get('/phpinfo', function(){phpinfo();});
 
 Route::get('/', function () {
     return view('welcome');
