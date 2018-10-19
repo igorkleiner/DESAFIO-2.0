@@ -1,19 +1,19 @@
 <?php
 
-Route::group(array('before' => 'auth','prefix' => ''),function(){
-    //{{Route('produto.produto')}}
-	Route::any('/usuario',         array('as'=> 'usuario.usuario',               'uses' => 'HomeController@usuario'));
+Route::name('usuario.')->prefix('usuario')->group(function()
+{
+	Route::any('/usuario', 'UsuarioController@usuario')->name('usuario');
 	//{{Route('usuario.usuario')}}
-	Route::post('/salvar',         array('as'=> 'salvar.salvar',                 'uses' => 'HomeController@salvarProduto'));
+	Route::post('/salvar', 'UsuarioController@salvarProduto')->name('salvar');
 	//{{Route('salvar.salvar')}}
-	Route::post('/excluir',        array('as'=> 'excluir.excluir',               'uses' => 'HomeController@excluirProduto'));
+	Route::post('/excluir', 'UsuarioController@excluirProduto')->name('excluir');
 	//{{Route('excluir.excluir')}}
-	Route::post('/salvacadastro',  array('as'=> 'salvacadastro.salvacadastro',   'uses' => 'HomeController@salvarUsuario'));
+	Route::post('/salvacadastro', 'UsuarioController@salvarUsuario')->name('salvacadastro');
 	//{{Route('salvacadastro.salvacadastro')}}
-	Route::post('/excluicadastro', array('as'=> 'excluicadastro.excluicadastro', 'uses' => 'HomeController@excluirUsuario'));
+	Route::post('/excluicadastro', 'UsuarioController@excluirUsuario')->name('excluicadastro');
 	//{{Route('salvacadastro.salvacadastro')}}
-	Route::post('/getusuario'  ,   array('as'=>'igor.getusuario'  ,              'uses'=>'HomeController@getUsuario'));
+	Route::post('/getusuario', 'UsuarioController@getUsuario')->name('getusuario');
 	//{{Route(getusuario.getusuario) }}
-	Route::post('/salvausuario',   array('as'=>'igor.salvausuario',              'uses'=>'HomeController@salvaUsuario'));
+	Route::post('/salvausuario', 'UsuarioController@salvaUsuario')->name('salvausuario');
 	//{{Route(salvausuario.salvausuario) }}
 });

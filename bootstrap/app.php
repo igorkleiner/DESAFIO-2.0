@@ -25,6 +25,12 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
+function debug($arg)
+{
+    $str = is_string($arg)?$arg:var_export($arg,true);
+    Log::debug($str);
+}
+
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,

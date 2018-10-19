@@ -8,25 +8,31 @@ class UsuarioController extends Controller
 {
     public function usuario()
 	{	
-		$nome = Auth::user()->usu_nome;
+		$nome = 'Igor';//Auth::user()->usu_nome;
 		$date = date('d-m-Y',time());
 		$hora = date('H:i:s:u',time());
-		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called LISTAR USUARIO blade" );		
-		$result = MakeRequest::callService('UsuarioService', 'listar') ;		
-		return View::make('usuario.listar_usuario')->with('dados',$result)->with('usuario',Auth::user());	
+		$usuario = json_encode( ['usu_id'=>1,'usu_nome'=>'Igor']);
+
+		\Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called LISTAR USUARIO blade" );		
+		$result =$this->_callService('UsuarioService', 'listar') ;	
+		debug([
+			"RESULT"=>$result,
+			"USUARIO"=>$usuario
+		])	;
+		return view('usuario.listar_usuario')->with('dados',$result)->with('usuario',$usuario);
 	}
 
 	public function salvarUsuario()
 	{
 		$data = Input::all();
-		$result = MakeRequest::callService('UsuarioService', 'salvar', $data);
+		$result = $this->_callService('UsuarioService', 'salvar', $data);
 		return json_encode($result);
 	}
 
 	public function excluirUsuario()
 	{
 		$data = Input::all();
-		$result = MakeRequest::callService('UsuarioService', 'excluir', $data);
+		$result = $this->_callService('UsuarioService', 'excluir', $data);
 		return json_encode($result);
 	}
 }

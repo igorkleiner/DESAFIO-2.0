@@ -1,7 +1,6 @@
 <?php
 
-Route::group(array('before' => 'auth','prefix' => ''),function(){
-
-    Route::any('/usuario', 'GraficoController@graficoHoras')->name('usuario');
-
+Route::name('grafico.')->prefix('grafico')->group(function()
+{
+    Route::any('/diario', 'GraficoController@graficoHoras')->name('diario');
 });
