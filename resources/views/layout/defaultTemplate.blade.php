@@ -15,7 +15,7 @@
 	    
 	<body>
 		<div style="padding: 5px;">		
-			{{--  @include('componentes.knockoutComponents')  --}}
+			 @include('componentes.knockoutComponents') 
 			@include('layout.menusuperior')
 			@include('layout.confirmModal')								
 			<div class="container">

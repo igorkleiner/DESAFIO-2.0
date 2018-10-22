@@ -43,7 +43,9 @@
                             optionsCaption:'selecione'
                         "></select>
                     </td>
-                    <td><button class= "btn btn-primary pull-center" id='btnCadastraNovo' style="display: none" data-bind = " visible:btnCadastraNovo, click:cadastraUsuario">Cadastrar Novo</button></td>
+                    <td>
+                        <button class= "btn btn-primary pull-center" id='btnCadastraNovo' style="display: none" data-bind = " visible:btnCadastraNovo, click:cadastraUsuario">Cadastrar Novo</button>
+                    </td>
                     
                     
                 </tr>
@@ -53,7 +55,7 @@
 				    <td><span data-bind="text:id"></span></td>
                     <td><span data-bind="text:nome"></span></td>
                     <td><span data-bind="text:$root.getperfil(perfil())"></span></td>
-				    <td>				    					    	
+				    <td> {{--  BOTOES --}}				    					    	
 				    	<button class='btn btn-danger pull-left' id='btnExcluir' style="display: none" data-bind="visible:  $root.btnExcluir , click:excluir" >
 				    		<span class="glyphicon glyphicon-remove"></span>
 				    	</button>
@@ -69,9 +71,6 @@
           </table>
 	</div>	
 </div>
-
-
-
 
 <!-- Modal -->
 <div id='usuarioModal' class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -127,8 +126,6 @@
 <!-- fim do Modal -->
 </div>
 
-
-
 <script type="text/javascript">
 
 var viewModel,dados,usuario;
@@ -136,7 +133,7 @@ var viewModel,dados,usuario;
     dados = {!! json_encode($dados) !!};
     console.log(dados);
    
-    //usuario = {{json_encode($usuario)}};   
+    usuario = {!! json_encode($usuario) !!};   
     {{--  usuario['usu_id'] = {{$usuario->usu_id}};        --}}
    
     //console.log(usuario);
